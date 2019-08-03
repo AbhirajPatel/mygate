@@ -19,6 +19,17 @@ There are some unit test and integration test are already written.
 In order to run the Integration test make sure that app is running locally with port 8080, this will hit to localhost:8080. 
 host value and post url can be changed. 
 
+# Apis 
+   considering that it is running locally in port 8080
+   1. http://localhost:8080/mygate/appicant/{name} -- GET -- get the MobileFood data with applicant name.
+   2. http://localhost:8080/mygate/street/{name} -- GET -- get the MobileFood data with street name. 
+   3. http://localhost:8080/mygate/expired    -- GET -- get all Mobillefood data whose certificate is expired. 
+   4. http://localhost:8080/mygate/delete/{id} -- DELETE -- delete the specific row with given id if present; 
+   5. http://localhost:8080/mygate/addDate -- POST -- add the list of MobileFood data (value can be provided as body);
+   6. http://localhost:8080/mygate/truck -- GET -- get the truck for given list of location in body. 
+  
+ Details of using this api can be referenced from the code. 
+
 # Given one or multiple locations, predict which truck will be the best one to assign the job.
    Assumptions : 
         I will look for the latitude and longitude within range of +100 and -100. 
@@ -28,7 +39,7 @@ host value and post url can be changed.
   I have avoided checking expirationdate, already booked, etc condition for find the best truck;
   Best truck is founded based on distance criteria for now. 
   
-#Code
+# Code
  Code is written with proper documentation. 
  Modularity is followed. 
  SOLID principle is followed as well. 
@@ -38,4 +49,5 @@ host value and post url can be changed.
  The bed for writting the test is already set, new test cases can easily added. 
  
  
- #Go with code to see the quality. 
+ # Go with code to see the quality. 
+ # All the logics and use cases are properly documented over code. 
