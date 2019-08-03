@@ -1,6 +1,9 @@
 
 # mygate
 There is a setup file to run this app.
+
+git clone https://github.com/AbhirajPatel/mygate.git
+Go to this local repository;
 just run the set up file.
 
 
