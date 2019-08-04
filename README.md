@@ -1,11 +1,9 @@
 
 # mygate
-There is a setup file to run this app.
+This app is hosted ver ec2. 
 
 git clone https://github.com/AbhirajPatel/mygate.git
 Go to this local repository;
-just run the set up file.
-
 
 # Dependency :
    1. java 8
@@ -13,23 +11,84 @@ just run the set up file.
    3. docker should be install
    4. spring boot version used is 2.1.6;
   
-I am using postgres data base for this, and a custome postgres image is pushed to docker hub.
-setup file will pul the image and start the container with proper configurations. 
+I am using postgres data base for this as docker container running over ec2 instance; 
+All the data are loaded in the pstgres container. 
 
-This is an spring boot app with loaded data in postgres data base running as docker container;
 There are some unit test and integration test are already written. 
+Integration test will hit thr api f app runiing in aws, this can be used to test the hsted app. 
 
-In order to run the Integration test make sure that app is running locally with port 8080, this will hit to localhost:8080. 
-host value and post url can be changed. 
+Host value and post url can be changed. 
 
 # Apis 
-   considering that it is running locally in port 8080
-   1. http://localhost:8080/mygate/appicant/{name} -- GET -- get the MobileFood data with applicant name.
-   2. http://localhost:8080/mygate/street/{name} -- GET -- get the MobileFood data with street name. 
-   3. http://localhost:8080/mygate/expired    -- GET -- get all Mobillefood data whose certificate is expired. 
-   4. http://localhost:8080/mygate/delete/{id} -- DELETE -- delete the specific row with given id if present; 
-   5. http://localhost:8080/mygate/addDate -- POST -- add the list of MobileFood data (value can be provided as body);
-   6. http://localhost:8080/mygate/truck -- GET -- get the truck for given list of location in body. 
+   considering that it is running in aws in port 8080
+   
+   1. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/appicant/{name} -- GET -- get the MobileFood data               with applicant name.
+   
+   
+   2. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/street/{name} -- GET -- get the MobileFood data with             street name. 
+   
+   3. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/expired    -- GET -- get all Mobillefood data whose             certificate is expired. 
+   
+   4. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/delete/{id} -- DELETE -- delete the specific row with           given id if present; 
+   
+   
+   5. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/addDate -- POST -- add the list of MobileFood data (value      can be provided as body);
+     
+     
+     exapmple paylad = 
+      
+      [
+        {
+         "priorPermit"=priorPermit2,
+         "cnn"=1232,
+         "address"=address2,
+         "facilityType"=facilityType2, 
+         "locationDescription"=locationDescription2, 
+         "blocklot"=blocklot2, 
+         "latitude"=1232.0, 
+         "nOISent"=nOISent2, 
+         "received"=received2, 
+         "expirationdate"=2019-08-04, 
+         "applicant"=applicant2, 
+         "lot"=lot2, 
+         "schedule"=schedule2, 
+         "approved"=approved2, 
+         "locationid"=locationid2, 
+         "permit"=permit2, 
+         "x"=1232.0, 
+         "y"=1232.0, 
+         "block"=block2, 
+         "location"=location2, 
+         "foodItems"=foodItems2, 
+         "status"=status2, 
+         "longitude"=1232.0
+        }
+     ]
+
+     Return will be the savedMobile fod enitiy with id. 
+     
+   6. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/truck -- GET -- get the truck for given list of location in body. 
+      We have to provid the location list as payload in bosy; 
+      
+     Example payload =
+     {
+     "location"=
+       [
+          {
+           "latitude"=1242.23, 
+           "longitude"=1235.12
+           },
+           {
+           "latitude"=1242.23, 
+           "longitude"=1125.0
+           }
+        ]
+      }
+    
+    
+   Return will be the best MobileFood Enity that will suit the best trcuk for delivery. 
+     
+     
   
  Details of using this api can be referenced from the code. 
 
