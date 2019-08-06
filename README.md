@@ -22,7 +22,7 @@ Host value and post url can be changed.
 # Apis 
    considering that it is running in aws in port 8080
    
-   1. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/appicant/{name} -- GET -- get the MobileFood data               with applicant name.
+   1. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/applicant/{name} -- GET -- get the MobileFood data               with applicant name.
    
    
    2. http://ec2-3-17-67-157.us-east-2.compute.amazonaws.com:8080/mygate/street/{name} -- GET -- get the MobileFood data with             street name. 
