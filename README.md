@@ -91,6 +91,8 @@ Host value and post url can be changed.
      
   
  Details of using this api can be referenced from the code. 
+ 
+ Note:  Here the assumption is that, we are not validating over any fields to be mandatory to be part of the mobile food data. 
 
 # Given one or multiple locations, predict which truck will be the best one to assign the job.
    Assumptions : 
